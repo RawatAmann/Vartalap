@@ -16,13 +16,14 @@
         android:layout_height="wrap_content"
         android:gravity="center"
         android:layout_weight="20">
+
         <RelativeLayout
             android:layout_width="32dp"
             android:layout_height="32dp"
             android:layout_margin="10dp"
             android:background="@drawable/circular_bg"
             android:gravity="center"
-            android:backgroundTint="@color/my_primary">
+            android:backgroundTint="@color/black">
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -35,7 +36,7 @@
             android:layout_width="32dp"
             android:layout_height="32dp"
             android:background="@drawable/circular_bg"
-            android:backgroundTint="@color/black"
+            android:backgroundTint="@color/my_primary"
             android:layout_margin="10dp"
             android:gravity="center" >
             <TextView
@@ -50,10 +51,9 @@
             android:layout_width="32dp"
             android:layout_height="32dp"
             android:background="@drawable/circular_bg"
-            android:backgroundTint="@color/black"
+            android:backgroundTint="@color/my_primary"
             android:layout_margin="10dp"
-            android:gravity="center"
-            >
+            android:gravity="center">
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -67,13 +67,13 @@
     <ImageView
         android:layout_width="150dp"
         android:layout_height="150dp"
-        android:src="@drawable/phone1"
+        android:src="@drawable/otplogo"
         android:layout_weight="20" />
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Enter Mobile Number"
+        android:text="Enter OTP send to your Phone Number"
         android:layout_gravity="center_vertical"
         android:letterSpacing="0.08"
         android:textStyle="bold"
@@ -87,39 +87,33 @@
         android:gravity="center"
         android:layout_weight="5">
 
-    <com.hbb20.CountryCodePicker
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:ccp_showFlag="false"
-        app:ccp_showNameCode="false"
-        android:id="@+id/login_countrycode"/>
-
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="10dp"
             android:layout_margin="7dp"
-            android:hint="Phone Number"
-            android:inputType="phone"
+            android:hint="OTP"
+            android:inputType="number"
+            android:maxLength="6"
             android:background="@drawable/edit_text_rounded_corner"
             android:elevation="5dp"
-            android:id="@+id/login_mobile_number"/>
+            android:id="@+id/login_otp"/>
 
     </LinearLayout>
 
-    
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="100dp"
         android:gravity="center"
         android:orientation="vertical"
         android:layout_weight="10">
-        
+
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Send OTP"
-            android:id="@+id/send_otp_btn"/>
+            android:text="Next"
+            android:id="@+id/login_next_btn"/>
 
         <ProgressBar
             android:layout_width="32dp"
@@ -129,8 +123,15 @@
             android:id="@+id/login_progress_bar"/>
 
 
-
-
     </LinearLayout>
+
+
+    <TextView
+        android:id="@+id/resend_otp_textview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="Resend OTP to your Phone Number"
+        android:layout_weight="10"/>
 
 </LinearLayout>
