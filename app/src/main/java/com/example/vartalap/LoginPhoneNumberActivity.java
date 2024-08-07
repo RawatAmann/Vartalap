@@ -2,6 +2,7 @@ package com.example.vartalap;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
@@ -30,6 +31,8 @@ public class LoginPhoneNumberActivity extends AppCompatActivity {
         // now we will link the phone number with the country code
         countryCodePicker.registerCarrierNumberEditText(phoneInput);
 
+        progressBar.setVisibility(View.GONE);
+
         //now we will set onclick() in send otp button
         sendOtpBtn.setOnClickListener((v)->
         {
@@ -39,7 +42,7 @@ public class LoginPhoneNumberActivity extends AppCompatActivity {
                 return;
             }
             Intent intent=new Intent(LoginPhoneNumberActivity.this,LoginOtpActivity.class);
-            intent.putExtra("phone_number",countryCodePicker.getFullNumberWithPlus());
+            intent.putExtra("phone",countryCodePicker.getFullNumberWithPlus());
             startActivity(intent);
         });
     }
