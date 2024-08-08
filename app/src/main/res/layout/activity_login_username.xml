@@ -94,7 +94,7 @@
             android:padding="10dp"
             android:layout_margin="7dp"
             android:hint="Username"
-            android:inputType="phone"
+            android:inputType="text"
             android:background="@drawable/edit_text_rounded_corner"
             android:elevation="5dp"/>
 
