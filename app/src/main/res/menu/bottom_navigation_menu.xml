@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:title="Chats"
+        android:icon="@drawable/searchicon"
+        android:id="@+id/menu_chats"
+        />
+
+    <item android:title="Status"
+        android:icon="@drawable/searchicon"
+        android:id="@+id/menu_status"
+        />
+
+    <item android:title="Profile"
+        android:icon="@drawable/searchicon"
+        android:id="@+id/menu_profile"
+        />
+
+    <item android:title="Calls"
+        android:icon="@drawable/searchicon"
+        android:id="@+id/menu_calls"
+        />
+
+</menu>
