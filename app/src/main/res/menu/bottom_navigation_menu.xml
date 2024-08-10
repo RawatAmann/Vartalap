@@ -2,22 +2,22 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item android:title="Chats"
-        android:icon="@drawable/searchicon"
+        android:icon="@drawable/chaticon"
         android:id="@+id/menu_chats"
         />
 
     <item android:title="Status"
-        android:icon="@drawable/searchicon"
+        android:icon="@drawable/statusicon"
         android:id="@+id/menu_status"
         />
 
     <item android:title="Profile"
-        android:icon="@drawable/searchicon"
+        android:icon="@drawable/profileicon"
         android:id="@+id/menu_profile"
         />
 
     <item android:title="Calls"
-        android:icon="@drawable/searchicon"
+        android:icon="@drawable/callicon"
         android:id="@+id/menu_calls"
         />
 

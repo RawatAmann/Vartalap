@@ -67,13 +67,14 @@ public class LoginUsernameActivity extends AppCompatActivity {
         }
         else
         {
-            userModel = new UserModel(phoneNumber,username, Timestamp.now());
+            userModel = new UserModel(phoneNumber,username, Timestamp.now(), FirebaseUtil.currentUserId() );
         }
 
         FirebaseUtil.currentUserDetails().set(userModel).addOnCompleteListener(new OnCompleteListener<Void>()
         {
             @Override
-            public void onComplete(@NonNull Task<Void> task) {
+            public void onComplete(@NonNull Task<Void> task)
+            {
                 setInProgress(false);
                 if (task.isSuccessful())
                 {
@@ -81,7 +82,6 @@ public class LoginUsernameActivity extends AppCompatActivity {
                     i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                     startActivity(i);
                 }
-
             }
         });
 
