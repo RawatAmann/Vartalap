@@ -13,7 +13,7 @@ public class AndroidUtil
         Toast.makeText(context, message, Toast.LENGTH_LONG).show();
     }
 
-    static void passUserModelAsIntent(Intent i, UserModel model)
+    public static void passUserModelAsIntent(Intent i, UserModel model)
     {
         i.putExtra("username", model.getUsername() );
         i.putExtra("phone", model.getPhone() );
