@@ -1,6 +1,7 @@
 package com.example.vartalap.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -8,6 +9,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.vartalap.ChatActivity;
 import com.example.vartalap.R;
 import com.example.vartalap.model.UserModel;
 import com.example.vartalap.utils.FirebaseUtil;
@@ -34,6 +37,14 @@ public class SearchUserRecyclerAdapter extends FirestoreRecyclerAdapter<UserMode
         {
             holder.usernameText.setText(model.getUsername() + "(Me)");
         }
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(context, ChatActivity.class);
+                i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                context.startActivity(i);
+            }
+        });
 
 
     }
@@ -48,6 +59,7 @@ public class SearchUserRecyclerAdapter extends FirestoreRecyclerAdapter<UserMode
 
 
 
+    // view holder
     class UserModelViewHolder extends RecyclerView.ViewHolder
     {
         TextView usernameText,phoneText;
