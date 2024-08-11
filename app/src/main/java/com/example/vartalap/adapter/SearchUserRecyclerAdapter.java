@@ -9,10 +9,10 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
-
 import com.example.vartalap.ChatActivity;
 import com.example.vartalap.R;
 import com.example.vartalap.model.UserModel;
+import com.example.vartalap.utils.AndroidUtil;
 import com.example.vartalap.utils.FirebaseUtil;
 import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
@@ -37,11 +37,12 @@ public class SearchUserRecyclerAdapter extends FirestoreRecyclerAdapter<UserMode
         {
             holder.usernameText.setText(model.getUsername() + "(Me)");
         }
+
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent i = new Intent(context, ChatActivity.class);
-                i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                AndroidUtil.passUserModelAsIntent(i, model);
                 context.startActivity(i);
             }
         });
