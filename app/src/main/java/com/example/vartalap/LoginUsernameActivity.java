@@ -32,55 +32,43 @@ public class LoginUsernameActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login_username);
 
-        usernameInput=findViewById(R.id.login_username);
-        letMeInBtn=findViewById(R.id.login_let_me_in_btn);
-        progressBar=findViewById(R.id.login_progress_bar);
+        usernameInput = findViewById(R.id.login_username);
+        letMeInBtn = findViewById(R.id.login_let_me_in_btn);
+        progressBar =findViewById(R.id.login_progress_bar);
 
-        phoneNumber=getIntent().getExtras().getString("phone");
+        phoneNumber = getIntent().getExtras().getString("phone");
         getUsername();
 
-        letMeInBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                setUserName();
-            }
+        letMeInBtn.setOnClickListener(v ->
+        {
+            setUserName();
         });
 
 
-    }  // oncreate() method closed
+    }
 
+    void setUserName(){
 
-    void setUserName()
-    {
-
-        String username=usernameInput.getText().toString();
-        if(username.length()<3 || username.isEmpty() )
-        {
-            usernameInput.setError("Username length should be greater than 3");
+        String username = usernameInput.getText().toString();
+        if(username.isEmpty() || username.length()<3){
+            usernameInput.setError("Username length should be at least 3 chars");
             return;
         }
         setInProgress(true);
-
-        if(userModel!=null)
-        {
+        if(userModel!=null){
             userModel.setUsername(username);
-        }
-        else
-        {
-            userModel = new UserModel(phoneNumber,username, Timestamp.now(), FirebaseUtil.currentUserId() );
+        }else{
+            userModel = new UserModel(phoneNumber,username, Timestamp.now(),FirebaseUtil.currentUserId());
         }
 
-        FirebaseUtil.currentUserDetails().set(userModel).addOnCompleteListener(new OnCompleteListener<Void>()
-        {
+        FirebaseUtil.currentUserDetails().set(userModel).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
-            public void onComplete(@NonNull Task<Void> task)
-            {
+            public void onComplete(@NonNull Task<Void> task) {
                 setInProgress(false);
-                if (task.isSuccessful())
-                {
-                    Intent i =new Intent(LoginUsernameActivity.this,MainActivity.class);
-                    i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                    startActivity(i);
+                if(task.isSuccessful()){
+                    Intent intent = new Intent(LoginUsernameActivity.this,MainActivity.class);
+                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK );
+                    startActivity(intent);
                 }
             }
         });
