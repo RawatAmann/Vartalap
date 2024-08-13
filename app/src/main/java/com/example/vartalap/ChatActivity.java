@@ -59,12 +59,29 @@ public class ChatActivity extends AppCompatActivity {
 
         otherUsername.setText(otherUser.getUsername() );
 
+
+        sendMessageBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String message=messageInput.getText().toString().trim();
+                if(message.isEmpty())
+                    return;
+                sendMessageToUser(message);
+            }
+        });
+
         getOrCreateChatroomModel();
+
+
+
+    }       // onCreate method closed
+
+    void sendMessageToUser(String message)
+    {
 
     }
 
-    void getOrCreateChatroomModel()
-    {
+    void getOrCreateChatroomModel()    {
         FirebaseUtil.getChatroomReference(chatroomId).get().addOnCompleteListener(task -> {
             if(task.isSuccessful())
             {
