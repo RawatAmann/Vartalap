@@ -10,6 +10,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.vartalap.model.ChatMessageModel;
 import com.example.vartalap.model.ChatroomModel;
 import com.example.vartalap.model.UserModel;
 import com.example.vartalap.utils.AndroidUtil;
@@ -78,7 +79,10 @@ public class ChatActivity extends AppCompatActivity {
 
     void sendMessageToUser(String message)
     {
+        chatroomModel.setLastMessageTimestamp(Timestamp.now() );
+        chatroomModel.setLastMessageSenderId(FirebaseUtil.currentUserId() );
 
+        ChatMessageModel chatMessageModel = new ChatMessageModel(message, FirebaseUtil.currentUserId(), Timestamp.now() ) ;
     }
 
     void getOrCreateChatroomModel()    {
