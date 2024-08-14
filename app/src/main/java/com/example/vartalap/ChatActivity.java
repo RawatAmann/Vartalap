@@ -18,6 +18,7 @@ import com.example.vartalap.utils.FirebaseUtil;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.Timestamp;
+import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 
 import java.lang.reflect.Array;
@@ -81,8 +82,21 @@ public class ChatActivity extends AppCompatActivity {
     {
         chatroomModel.setLastMessageTimestamp(Timestamp.now() );
         chatroomModel.setLastMessageSenderId(FirebaseUtil.currentUserId() );
+        FirebaseUtil.getChatroomReference(chatroomId).set(chatroomModel);
+
 
         ChatMessageModel chatMessageModel = new ChatMessageModel(message, FirebaseUtil.currentUserId(), Timestamp.now() ) ;
+        FirebaseUtil.getChatroomMessageReference(chatroomId).add(chatMessageModel)
+                .addOnCompleteListener(new OnCompleteListener<DocumentReference>() {
+                    @Override
+                    public void onComplete(@NonNull Task<DocumentReference> task) {
+                        if(task.isSuccessful())
+                        {
+                            messageInput.setText("");
+                        }
+                    }
+                });
+
     }
 
     void getOrCreateChatroomModel()    {
