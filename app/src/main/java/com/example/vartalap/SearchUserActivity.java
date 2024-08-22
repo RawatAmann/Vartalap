@@ -45,7 +45,8 @@ public class SearchUserActivity extends AppCompatActivity {
         });
     }
 
-    void setupSearchRecyclerView(String searchTerm) {
+    void setupSearchRecyclerView(String searchTerm)
+    {
         // Replace 'users' with your actual Firestore collection name
         Query query = FirebaseFirestore.getInstance().collection("users")
                 .whereGreaterThanOrEqualTo("username", searchTerm)
